@@ -3,12 +3,12 @@ using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 
 namespace Clientes.Models;
-public class FechaNacimientoAttribute : ValidationAttribute
+public class DateRangeAttribute : ValidationAttribute
 {
     private readonly DateTime _minDate;
     private readonly DateTime _maxDate;
 
-    public FechaNacimientoAttribute()
+    public DateRangeAttribute()
     {
         _minDate = DateTime.Today.AddYears(-100);
         _maxDate = DateTime.Today;
@@ -28,13 +28,13 @@ public class FechaNacimientoAttribute : ValidationAttribute
             {
                 if (date < _minDate || date > _maxDate)
                 {
-                    return new ValidationResult($"La fecha de Nacimiento tiene que estar en el rango de hoy y hace 100 años");
+                    return new ValidationResult($"The Birthdate must be between 100 years ago and today");
                 }
             }
 
             return ValidationResult.Success!;
         }
-        return new ValidationResult($"La fecha de Nacimiento tiene que ser una fecha valida");
+        return new ValidationResult($"The Birthdate must be a valid Date");
 
     }
 }

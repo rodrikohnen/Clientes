@@ -16,10 +16,10 @@ namespace Clientes.APIWEB.Controllers
         public ClienteController(IClienteServicio clienteServicio)
         {
             _clienteServicio = clienteServicio;
-        }     
+        }
 
 
-        [HttpGet("BusquedaXID")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<MostrarClienteDTO>> ListarporID(int id)
         {
             if (ModelState.IsValid)
@@ -42,8 +42,8 @@ namespace Clientes.APIWEB.Controllers
             }else return BadRequest();
         }
 
-        [HttpGet("GetAll")]
-        public async Task<ActionResult<MostrarClienteDTO>> Obtenertodos()
+        [HttpGet]
+        public async Task<ActionResult<List<MostrarClienteDTO>>> Obtenertodos()
         {
             if (ModelState.IsValid)
             {
@@ -61,13 +61,15 @@ namespace Clientes.APIWEB.Controllers
         }
 
 
-        [HttpPost("Registrar")]
-        public async Task<ActionResult<MostrarClienteDTO>> Registrar([FromForm] CreacionClienteDTO creacionCliente)
+        [HttpPost]
+        public async Task<ActionResult<MostrarClienteDTO>> Registrar(CreacionClienteDTO creacionCliente)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
+                    creacionCliente.Id = null;
+
                     var cliente = await _clienteServicio.Registrar(creacionCliente);
 
                     return Ok(cliente);
@@ -82,13 +84,14 @@ namespace Clientes.APIWEB.Controllers
         }
 
     
-        [HttpPut("Actualizar")]
-        public async Task<ActionResult<MostrarClienteDTO>> Actualizar(int id, CreacionClienteDTO modelo)
+        [HttpPut]
+        public async Task<ActionResult<MostrarClienteDTO>> Actualizar(CreacionClienteDTO modelo)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
+                    int? id = modelo.Id;
                     var cliente = await _clienteServicio.Actualizar(id, modelo);
 
                     return Ok(cliente);
@@ -106,7 +109,7 @@ namespace Clientes.APIWEB.Controllers
         }
 
         
-        [HttpDelete("Eliminar")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Eliminar(int id)
         {
             if (ModelState.IsValid)

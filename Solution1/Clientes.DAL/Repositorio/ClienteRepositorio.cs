@@ -17,7 +17,7 @@ namespace Clientes.DAL
             _mapper = mapper;
         }
 
-        public async Task<MostrarClienteDTO> Actualizar(int id, CreacionClienteDTO modelo)
+        public async Task<MostrarClienteDTO> Actualizar(int? id, CreacionClienteDTO modelo)
         {
             var cliente = await _dbcontext.Clientes.Where(c => c.Id == id).FirstOrDefaultAsync();
 
@@ -27,7 +27,7 @@ namespace Clientes.DAL
             cliente.NameLastname = modelo.NameLastname;
             cliente.NroDocumento = modelo.NroDocumento;
             cliente.TipoDeDocumento = modelo.TipoDeDocumento;
-            cliente.FechadeNacimiento = modelo.FechadeNacimiento;
+            cliente.FechadeNacimiento = DateTime.ParseExact(modelo.FechadeNacimiento!, "dd/MM/yyyy", null);
             cliente.FechaHoraActualizacion = modelo.FechaHoraActualizacion;
 
             _dbcontext.Update(cliente);
@@ -48,8 +48,9 @@ namespace Clientes.DAL
         public async Task<MostrarClienteDTO> Insertar(CreacionClienteDTO modelo)
         {
             try
-            {
+            {                   
                 var clienteAdd = _mapper.Map<Cliente>(modelo);
+                clienteAdd.FechadeNacimiento = DateTime.ParseExact(modelo.FechadeNacimiento!, "dd/MM/yyyy", null);
                 _dbcontext.Add(clienteAdd);
                 await _dbcontext.SaveChangesAsync();
                 return _mapper.Map<MostrarClienteDTO>(clienteAdd);

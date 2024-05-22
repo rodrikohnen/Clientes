@@ -10,12 +10,12 @@ namespace Clientes.BLL
     {
         Task<DTO> Registrar(DTOCreacion modelo);
 
-        Task<DTO> Actualizar(int id, DTOCreacion modelo);
+        Task<DTO> Actualizar(int? id, DTOCreacion modelo);
 
         Task<bool> Eliminar(int id);
 
         Task<DTO> ObtenerPorId(int id);
 
-        Task<IEnumerable<DTO>> ObtenerTodos();
+        Task<List<DTO>> ObtenerTodos();
     }
 }
