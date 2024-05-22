@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clientes.Models", "Clientes.Models\Clientes.Models.csproj", "{CD7408E9-3180-4C48-B9B8-0987C1979E71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clientes.Models", "Clientes.Models\Clientes.Models.csproj", "{CD7408E9-3180-4C48-B9B8-0987C1979E71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clientes.DAL", "Clientes.Dal\Clientes.DAL.csproj", "{1817918D-D3C7-4A4E-9C15-E7224E2F92D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clientes.DAL", "Clientes.Dal\Clientes.DAL.csproj", "{1817918D-D3C7-4A4E-9C15-E7224E2F92D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clientes.BLL", "Clientes.BLL\Clientes.BLL.csproj", "{7646D2EB-293E-4DC5-B62A-3B2B4557F274}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clientes.BLL", "Clientes.BLL\Clientes.BLL.csproj", "{7646D2EB-293E-4DC5-B62A-3B2B4557F274}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clientes.APIWEB", "Clientes.APIWEB\Clientes.APIWEB.csproj", "{730F9A0C-7C4B-421D-B3C3-18BFA2D76512}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clientes.APIWEB", "Clientes.APIWEB\Clientes.APIWEB.csproj", "{730F9A0C-7C4B-421D-B3C3-18BFA2D76512}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
