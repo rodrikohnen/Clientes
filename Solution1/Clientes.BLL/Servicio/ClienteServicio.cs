@@ -2,6 +2,7 @@
 using Clientes.DAL;
 using Clientes.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.SqlServer.Server;
 
 namespace Clientes.BLL
 {
@@ -17,8 +18,9 @@ namespace Clientes.BLL
         }
 
 
-        public async Task<MostrarClienteDTO> Actualizar(int id, CreacionClienteDTO modelo)
+        public async Task<MostrarClienteDTO> Actualizar(int? id, CreacionClienteDTO modelo)
         {
+            modelo.FechaHoraActualizacion = DateTime.Now;
             return await _clienteRepositorio.Actualizar(id, modelo);
         }
 
@@ -35,18 +37,20 @@ namespace Clientes.BLL
         }
 
 
-        public async Task<IEnumerable<MostrarClienteDTO>> ObtenerTodos()
+        public async Task<List<MostrarClienteDTO>> ObtenerTodos()
         {
             var queryClientes =  await _clienteRepositorio.ObtenerTodos();
 
             var listaClientes = await queryClientes.ToListAsync();
 
-            return _mapper.Map<IEnumerable<MostrarClienteDTO>>(listaClientes);
+            return _mapper.Map<List<MostrarClienteDTO>>(listaClientes);
         }
 
 
         public async Task<MostrarClienteDTO> Registrar(CreacionClienteDTO modelo)
         {
+            
+            modelo.FechaHoraActualizacion = DateTime.Now;
             return await _clienteRepositorio.Insertar(modelo);
         }
     }

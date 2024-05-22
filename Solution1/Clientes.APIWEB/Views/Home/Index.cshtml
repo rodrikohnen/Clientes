@@ -1,7 +1,52 @@
-﻿@{
+﻿@using Clientes.Models
+@model List<MostrarClienteDTO>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>    
+    <h1 class="display-4">Administrador Clientes</h1>    
+</div>
+
+<div class="card">
+    <div class="card-header">     
+    </div>
+    <div class="card-body">
+
+        <a asp-action="Registrar" asp-controller="Home" class="btn btn-success btn-sm" asp-route-idCliente = "0"> Nuevo Cliente </a>
+
+        <hr />
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>NameLastname</th>
+                    <th>NroDocumento</th>
+                    <th>TipoDeDocumento</th>
+                    <th>FechadeNacimiento</th>
+                    <th>FechaHoraActualizacion</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.NameLastname</td>
+                        <td>@item.NroDocumento</td>
+                        <td>@item.TipoDeDocumento</td>
+                        <td>@item.FechadeNacimiento</td>
+                        <td>@item.FechaHoraActualizacion</td>
+                        <td>
+                            <a asp-action="ActualizarCliente" asp-controller="Home" asp-route-idCliente=@item.Id class="btn btn-primary btn-sm"> Editar </a>
+                            <a asp-action="Eliminar" asp-controller="Home" asp-route-idCliente=@item.Id class="btn btn-danger btn-sm"> Eliminar </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        
+    </div>
 </div>

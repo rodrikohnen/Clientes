@@ -14,6 +14,9 @@ namespace Clientes.APIWEB
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            //AddSwagger
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
 
             builder.Services.AddDbContext<AplicationDbContext>(option =>
 
@@ -41,6 +44,9 @@ namespace Clientes.APIWEB
             //Clientes
             builder.Services.AddScoped<IClienteServicio, ClienteServicio>();
             builder.Services.AddScoped<IClienteRepositorio, ClienteRepositorio>();
+
+            //Api
+            builder.Services.AddScoped<IServicio_API, Servicio_API>();
 
 
 
@@ -70,6 +76,9 @@ namespace Clientes.APIWEB
 
 
             app.UseCors(MisReglasCors);
+            //add swagger
+            app.UseSwagger();
+            app.UseSwaggerUI();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
