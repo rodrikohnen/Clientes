@@ -21,7 +21,7 @@ namespace Clientes.APIWEB
             List<MostrarClienteDTO> ListaClientes = new List<MostrarClienteDTO>();
 
             var peticion = new HttpClient();
-            peticion.BaseAddress = new Uri(_baseUrl);
+            peticion.BaseAddress = new Uri(_baseUrl!);
 
             var response = await peticion.GetAsync("api/Cliente/Obtenertodos");
 
@@ -40,16 +40,15 @@ namespace Clientes.APIWEB
             MostrarClienteDTO Objeto = new MostrarClienteDTO();
 
             var peticion = new HttpClient();
-            peticion.BaseAddress = new Uri(_baseUrl);
+            peticion.BaseAddress = new Uri(_baseUrl!);
 
             var response = await peticion.GetAsync($"api/Cliente/ListarporID/{idCliente}");
 
             if (response.IsSuccessStatusCode)
             {
                 var json_respuesta = await response.Content.ReadAsStringAsync();
-                var resultado = JsonConvert.DeserializeObject<ResultadoAPI>(json_respuesta);
-
-                Objeto = resultado!.Objeto!;
+                var resultado = JsonConvert.DeserializeObject<MostrarClienteDTO>(json_respuesta);
+                return resultado!;
             }
             return Objeto;
         }
@@ -98,7 +97,7 @@ namespace Clientes.APIWEB
             bool respuesta = false;
 
             var peticion = new HttpClient();
-            peticion.BaseAddress = new Uri(_baseUrl);           
+            peticion.BaseAddress = new Uri(_baseUrl!);           
 
             var response = await peticion.DeleteAsync($"api/Cliente/Eliminar/{idCliente}");
 
