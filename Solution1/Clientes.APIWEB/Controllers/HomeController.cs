@@ -53,9 +53,9 @@ namespace Clientes.APIWEB.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> ActualizarClienteView(CreacionClienteDTO modelo)
+        public async Task<IActionResult> ActualizarClienteView (CreacionClienteDTO modelo)
         {
-            bool respuesta = false;            
+            bool respuesta = false;                       
 
             respuesta = await _serviciosAPI.EditarCliente(modelo);            
 
@@ -92,9 +92,14 @@ namespace Clientes.APIWEB.Controllers
             return View(modelo);
         }
 
+        [HttpGet]
         public IActionResult ActualizarCliente(int idCliente)
         {
-            return View();
+            CreacionClienteDTO modelo = new CreacionClienteDTO();
+
+            modelo.Id = idCliente;
+
+            return View(modelo);
         }
 
 
