@@ -4,7 +4,7 @@ Instalación:<br>
 
 • Clonar el Repositorio <br>
 
-•	Agregar cadena de conexión para base de datos SQL Server en el appsettings.json <br>
+•	Confirmar cadena de conexión para base de datos SQL Server Express en el appsettings.json <br>
 
 •	Configurar proyecto de inicio en el proyecto Clientes.APIWEB<br>
 
