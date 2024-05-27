@@ -16,7 +16,7 @@ Instalación:<br>
 
 •	Ejecutar 
 
-•	Ver Swagger de API con validaciones agregando a la url "/swagger"
+•	Pueden ver la documentación de Swagger de la API con validaciones agregando a la url "/swagger"
 
 
                                                                                                                                                                         
