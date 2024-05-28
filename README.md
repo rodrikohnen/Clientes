@@ -4,7 +4,7 @@ Instalación:<br>
 
 • Clonar el Repositorio <br>
 
-• Comprobar que está instalado el sdk .net 8.0, en el caso contrario descargar [aqui](https://dotnet.microsoft.com/es-es/download/dotnet/8.0<br>) e instalar.
+• Comprobar que está instalado el sdk .net 8.0, en el caso contrario descargar [aqui](https://dotnet.microsoft.com/es-es/download/dotnet/8.0) e instalar.
 
 • Descargar e instalar Sql Server 2014 Express, crear una instancia.
 
